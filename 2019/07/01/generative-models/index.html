@@ -399,9 +399,9 @@
 <p>（4）解似然方程，若有解析解，则得到的参数即为所求； 若无解析解，如神经网络，可通过梯度下降逼近。</p>
 <h1 id="EM"><a href="#EM" class="headerlink" title="EM"></a>EM</h1><p><a href="https://blog.csdn.net/zouxy09/article/details/8537620" target="_blank" rel="noopener">https://blog.csdn.net/zouxy09/article/details/8537620</a></p>
 <ul>
-<li>优化目标：maximize $log\ p(X)$</li>
+<li>优化目标：maximize $log p(X)$</li>
 </ul>
-<p>$log\ p(X;\theta) = \sum_i log \  p(x^{(i)};\theta) = \sum_i log \sum_{z^{(i)}} p(x^{(i)},z^{(i)};\theta)$       ($x^{(i)}$是常数，$\theta$和$z^{(i)}$是变量)</p>
+<p>$log p(X;\theta) = \sum_i log   p(x^{(i)};\theta) = \sum_i log \sum_{z^{(i)}} p(x^{(i)},z^{(i)};\theta)$       ($x^{(i)}$是常数，$\theta$和$z^{(i)}$是变量)</p>
 <p>​                   $=\sum_i log \sum_{z^{(i)}} Q_i(z^{(i)}) \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z_{(i)})} $</p>
 <p>​                    $&gt;=\sum_i \sum_{z^{(i)}} Q_i(z^{(i)}) log \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z_{(i)})} $  （Jensen不等式）和的对数-&gt;对数的和，便于求导</p>
 <p>初始化分布参数$\theta$</p>
@@ -416,7 +416,7 @@
 </auto-encoding></blockquote>
 <ul>
 <li>Given a dataset $X = {x^1,x^2,x^3…x^N}$</li>
-<li>理想优化目标：maximize $log\ p(X)$</li>
+<li>理想优化目标：maximize $log p(X)$</li>
 </ul>
 <blockquote>
 <p>but in general this marginal likelihood is intractable to compute or differentiate directly for ﬂexible generative models, e.g. when components of the generative model are parameterized by neural networks.</p>
@@ -430,11 +430,11 @@
 <li>Posterior density also intractable $p_{\theta}(z|x) = p_{\theta}(x|z)p_{\theta}(z)/p_{\theta}(x)$  （Intractable data likelihood 无法采用EM算法）</li>
 </ul>
 <p>Solution: In addition to decoder network modeling $p_θ (x|z)$, define additional encoder network $q_ɸ (z|x) $that approximates $p_θ (z|x)$</p>
-<p>$log \ p_{\theta}(x^{(i)}) = E_{z^{(i)}::q_{\phi}(z^{(i)}|x^{(i)})}[log \ p_{\theta}(x^{(i)})]$     ($ p_{\theta}(x^{(i)}$ does not depend on z)</p>
-<p>​                     $=  E_{z^{(i)}}[log \ \frac{p_{\theta}(z^{(i)})p_{\theta}(x^{(i)}|z^{(i)})} {p_{\theta}(z^{(i)}|x^{(i)})}] $  (bayes)</p>
-<p>​                     $ = E_{z^{(i)}}[log \ \frac{p_{\theta}(z^{(i)})p_{\theta}(x^{(i)}|z^{(i)})} {p_{\theta}(z^{(i)}|x^{(i)})}   \frac {q_{\phi}(z^{(i)}|x^{(i)})} {q_{\phi}(z^{(i)}|x^{(i)})}] $</p>
-<p>​                      $=  E_{z^{(i)}}[log \ p_{\theta}(x^{(i)}|z^{(i)}) ]  - E_{z^{(i)}}[log \ \frac{q_{\phi}(z^{(i)}|x^{(i)})} {p_{\theta}(z^{(i)}}] +E_{z^{(i)}}[log \ \frac{q_{\phi}(z^{(i)}|x^{(i)})} {p_{\theta}(z^{(i)}|x^{(i)})}]  $</p>
-<p>​                      $=  E_{z^{(i)}}[log \ p_{\theta}(x^{(i)}|z^{(i)}) ]  -D_{KL}({q_{\phi}(z^{(i)}|x^{(i)})}|| {p_{\theta}(z^{(i)}})+ D_{KL}({q_{\phi}(z^{(i)}|x^{(i)})} ||{p_{\theta}(z^{(i)}|x^{(i)})}) $</p>
+<p>$log  p_{\theta}(x^{(i)}) = E_{z^{(i)}::q_{\phi}(z^{(i)}|x^{(i)})}[log  p_{\theta}(x^{(i)})]$     ($ p_{\theta}(x^{(i)}$ does not depend on z)</p>
+<p>​                     $=  E_{z^{(i)}}[log  \frac{p_{\theta}(z^{(i)})p_{\theta}(x^{(i)}|z^{(i)})} {p_{\theta}(z^{(i)}|x^{(i)})}] $  (bayes)</p>
+<p>​                     $ = E_{z^{(i)}}[log  \frac{p_{\theta}(z^{(i)})p_{\theta}(x^{(i)}|z^{(i)})} {p_{\theta}(z^{(i)}|x^{(i)})}   \frac {q_{\phi}(z^{(i)}|x^{(i)})} {q_{\phi}(z^{(i)}|x^{(i)})}] $</p>
+<p>​                      $=  E_{z^{(i)}}[log  p_{\theta}(x^{(i)}|z^{(i)}) ]  - E_{z^{(i)}}[log  \frac{q_{\phi}(z^{(i)}|x^{(i)})} {p_{\theta}(z^{(i)}}] +E_{z^{(i)}}[log  \frac{q_{\phi}(z^{(i)}|x^{(i)})} {p_{\theta}(z^{(i)}|x^{(i)})}]  $</p>
+<p>​                      $=  E_{z^{(i)}}[log  p_{\theta}(x^{(i)}|z^{(i)}) ]  -D_{KL}({q_{\phi}(z^{(i)}|x^{(i)})}|| {p_{\theta}(z^{(i)}})+ D_{KL}({q_{\phi}(z^{(i)}|x^{(i)})} ||{p_{\theta}(z^{(i)}|x^{(i)})}) $</p>
 <p>​                          <strong>reconstruction loss</strong>                <strong>KL loss </strong>                        $p_{\theta}(z^{(i)}|x^{(i)}) untractable, KL&gt;=0$</p>
 <p>​                         <strong>Reparameterization</strong></p>
 <blockquote>
@@ -466,8 +466,8 @@
 <blockquote>
 <p> because  $det(AB)=det(A)det(B)$   ,   $1 = det(AA^{-1})) = det(A)det(A^{-1})$  </p>
 </blockquote>
-<p>=&gt; $log \ p_i(z_i)  = log \ p_{i-1}(z_{i-1})  - log |det (\frac{dz_i}{dz_{i-1}})|$</p>
-<p>=&gt; $log \ p_i(z_i)  = log \ p_{0}(z_{0})  - \sum_{i=1}^{K} log |det (\frac{dz_i}{dz_{i-1}})|$</p>
+<p>=&gt; $log  p_i(z_i)  = log  p_{i-1}(z_{i-1})  - log |det (\frac{dz_i}{dz_{i-1}})|$</p>
+<p>=&gt; $log  p_i(z_i)  = log  p_{0}(z_{0})  - \sum_{i=1}^{K} log |det (\frac{dz_i}{dz_{i-1}})|$</p>
 <p>Required by the computation in the equation, a transformation function fifi should satisfy two properties:</p>
 <ol>
 <li>It is easily invertible.  (easy to generate data)</li>
@@ -479,7 +479,7 @@
 
 </improved></blockquote>
 <h3 id="PixelRNN-PixelCNN-Wavenet"><a href="#PixelRNN-PixelCNN-Wavenet" class="headerlink" title="PixelRNN   /   PixelCNN  /  Wavenet"></a>PixelRNN   /   PixelCNN  /  Wavenet</h3><p><strong>define tractable density function</strong></p>
-<p>优化目标： maximize $p(x) = \prod_{i=1}^n \ p(x_i|x_1,x_2,…,x_{i-1})$</p>
+<p>优化目标： maximize $p(x) = \prod_{i=1}^n  p(x_i|x_1,x_2,…,x_{i-1})$</p>
 <ul>
 <li>用神经网络(RNN/CNN)描述$p(x_i|x_1,x_2,…,x_{i-1})$</li>
 <li>Softmax 计算概率(神经网络输出N个值,经过softmax归一化为N个类别的概率值)  </li>
@@ -503,7 +503,7 @@
 <li>Gaussian loss   （神经网络预测mean &amp; scale）</li>
 </ul>
 <p>​         $x_t=z_t*\sigma(x_{&lt;t})+\mu(x_{&lt;t})$   其中$\sigma()$和$\mu()$均为神经网络,    $z_t$服从高斯分布</p>
-<p>​         神经网络输出2个值：$\mu   ,  log \ \sigma$       ( $log \ \sigma$ 可正可负)</p>
+<p>​         神经网络输出2个值：$\mu   ,  log  \sigma$       ( $log  \sigma$ 可正可负)</p>
 <ul>
 <li><p>Discretized logistic loss</p>
 <p>A mixture of logistics (MoL) is a set of M  Logistic distributions, each with its own $\mu$ and $\sigma$ and $w$ which will determine the probability of a distribution to be picked.</p>
