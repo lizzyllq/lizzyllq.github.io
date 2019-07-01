@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="BasicKL$D_{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E_{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么">
+<meta name="description" content="BasicKL$D{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么f是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git教程">
+<meta property="og:title" content="Generative models">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/generative-models/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="BasicKL$D_{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E_{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么">
+<meta property="og:description" content="BasicKL$D{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么f是">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://lilianweng.github.io/lil-log/assets/images/normalizing-flow.png">
-<meta property="og:updated_time" content="2019-07-01T08:56:12.067Z">
+<meta property="og:updated_time" content="2019-07-01T09:01:49.343Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git教程">
-<meta name="twitter:description" content="BasicKL$D_{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E_{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么">
+<meta name="twitter:title" content="Generative models">
+<meta name="twitter:description" content="BasicKL$D{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么f是">
 <meta name="twitter:image" content="https://lilianweng.github.io/lil-log/assets/images/normalizing-flow.png">
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <title>Git教程 | Hexo</title>
+  <title>Generative models | Hexo</title>
   
 
 
@@ -251,7 +251,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Git教程</h1>
+          <h1 class="post-title" itemprop="name headline">Generative models</h1>
         
 
         <div class="post-meta">
@@ -301,7 +301,7 @@
       
 
       
-        <h1 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h1><h2 id="KL"><a href="#KL" class="headerlink" title="KL"></a>KL</h2><p>$D_{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E_{x::p(x)} (log \frac{p(x)}{q(x)})$</p>
+        <h1 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h1><h2 id="KL"><a href="#KL" class="headerlink" title="KL"></a>KL</h2><p>$D<em>{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E</em>{x::p(x)} (log \frac{p(x)}{q(x)})$</p>
 <h2 id="Jensen-不等式"><a href="#Jensen-不等式" class="headerlink" title="Jensen 不等式"></a>Jensen 不等式</h2><blockquote>
 <p>设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当<strong>x</strong>是向量时，如果其hessian矩阵H是半正定的，那么f是凸函数。如果只大于0，不等于0，那么称f是严格凸函数。</p>
 </blockquote>
@@ -401,15 +401,18 @@
 <ul>
 <li>优化目标：maximize $log\ p(X)$</li>
 </ul>
-<p>$log\ p(X;\theta) = \sum_i log \  p(x^{(i)};\theta) = \sum_i log \sum_{z^{(i)}} p(x^{(i)},z^{(i)};\theta)$       ($x^{(i)}$是常数，$\theta$和$z^{(i)}$是变量)</p>
-<p>​                   $=\sum_i log \sum_{z^{(i)}} Q_i(z^{(i)}) \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z_{(i)})} $</p>
-<p>​                    $&gt;=\sum_i \sum_{z^{(i)}} Q_i(z^{(i)}) log \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z_{(i)})} $  （Jensen不等式）和的对数-&gt;对数的和，便于求导</p>
+<p>$log\ p(X;\theta) = \sum<em>i log \  p(x^{(i)};\theta) = \sum_i log \sum</em>{z^{(i)}} p(x^{(i)},z^{(i)};\theta)$       ($x^{(i)}$是常数，$\theta$和$z^{(i)}$是变量)</p>
+<p>​                   $=\sum<em>i log \sum</em>{z^{(i)}} Q<em>i(z^{(i)}) \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z</em>{(i)})} $</p>
+<p>​                    $&gt;=\sum<em>i \sum</em>{z^{(i)}} Q<em>i(z^{(i)}) log \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z</em>{(i)})} $  （Jensen不等式）和的对数-&gt;对数的和，便于求导</p>
 <p>初始化分布参数$\theta$</p>
 <p>E:  根据参数初始值或上一次迭代的模型参数来计算出后验概率 $Q_i(z^{(i)})  = p(z^{(i)}|x^{(i)} ;\theta)$</p>
-<p>M:  将似然函数最大化以获得新的参数值  $\theta := argmax_{\theta}\sum_i \sum_{z^{(i)}} Q_i(z^{(i)}) log \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z_{(i)})} $</p>
+<p>M:  将似然函数最大化以获得新的参数值  $\theta := argmax<em>{\theta}\sum_i \sum</em>{z^{(i)}} Q<em>i(z^{(i)}) log \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z</em>{(i)})} $</p>
 <h1 id="VAE"><a href="#VAE" class="headerlink" title="VAE"></a>VAE</h1><h2 id="Problem-Senario"><a href="#Problem-Senario" class="headerlink" title="Problem Senario"></a>Problem Senario</h2><blockquote>
-<p>Let us consider some dataset $X = {x^(i) }<em>{ i=1}^ N$ consisting of $N$ i.i.d. samples of some continuous or discrete variable $x$. We assume that the data are generated by some random process, involving an unobserved continuous random variable $z$. The process consists of two steps: (1) a value $z^(i)$ is generated from some prior distribution $p</em>{θ^∗} (z)$; (2) a value $x^(i)$ is generated from some conditional distribution $p_{θ^∗} (x|z)$. We assume that the prior $p_{θ^∗} (z)$ and likelihood $p_{θ^∗} (x|z)$ come from parametric families of distributions $p_{θ} (z)$ and $p_{θ} (x|z)$, and that their PDFs are differentiable almost everywhere w.r.t. both θ and z. Unfortunately, a lot of this process is hidden from our view: the true parameters θ ∗ as well as the values of the latent variables z (i) are unknown to us.</p>
+<p>Let us consider some dataset $X = {x^(i) }<em>{ i=1}^ N$ consisting of $N$ i.i.d. samples of some continuous or discrete variable $x$. We assume that the data are generated by some random process, involving an unobserved continuous random variable $z$. The process consists of two steps: (1) a value $z^(i)$ is generated from some prior distribution $p</em>{θ^∗} (z)$; (2) a value $x^(i)$ is generated from some conditional distribution $p<em>{θ^∗} (x|z)$. We assume that the prior $p</em>{θ^∗} (z)$ and likelihood $p<em>{θ^∗} (x|z)$ come from parametric families of distributions $p</em>{θ} (z)$ and $p_{θ} (x|z)$, and that their PDFs are differentiable almost everywhere w.r.t. both θ and z. Unfortunately, a lot of this process is hidden from our view: the true parameters θ ∗ as well as the values of the latent variables z (i) are unknown to us.</p>
 <auto-encoding variational bayes>
+
+
+
 </auto-encoding></blockquote>
 <ul>
 <li>Given a dataset $X = {x^1,x^2,x^3…x^N}$</li>
@@ -418,23 +421,25 @@
 <blockquote>
 <p>but in general this marginal likelihood is intractable to compute or differentiate directly for ﬂexible generative models, e.g. when components of the generative model are parameterized by neural networks.</p>
 <improved variational inference with inverse autoregressive flow>
+
 </improved></blockquote>
 <p>Choose prior p(z) to be simple, e.g. Gaussian.</p>
 <p>Conditional p(x|z) is complex (generates image) =&gt; represent with neural network</p>
 <ul>
-<li>Data likelihood $p_{\theta}(x)= \int p_{\theta}(z) p_{\theta}(x|z)$  (Intractible to compute $p_{\theta}(x|z)$ for every z, 无法直接用最大似然)</li>
-<li>Posterior density also intractable $p_{\theta}(z|x) = p_{\theta}(x|z)p_{\theta}(z)/p_{\theta}(x)$  （Intractable data likelihood 无法采用EM算法）</li>
+<li>Data likelihood $p<em>{\theta}(x)= \int p</em>{\theta}(z) p<em>{\theta}(x|z)$  (Intractible to compute $p</em>{\theta}(x|z)$ for every z, 无法直接用最大似然)</li>
+<li>Posterior density also intractable $p<em>{\theta}(z|x) = p</em>{\theta}(x|z)p<em>{\theta}(z)/p</em>{\theta}(x)$  （Intractable data likelihood 无法采用EM算法）</li>
 </ul>
-<p>Solution: In addition to decoder network modeling $p_θ (x|z)$, define additional encoder network $q_ɸ (z|x) $that approximates $p_θ (z|x)$</p>
-<p>$log \ p_{\theta}(x^{(i)}) = E_{z^{(i)}::q_{\phi}(z^{(i)}|x^{(i)})}[log \ p_{\theta}(x^{(i)})]$     ($ p_{\theta}(x^{(i)}$ does not depend on z)</p>
-<p>​                     $=  E_{z^{(i)}}[log \ \frac{p_{\theta}(z^{(i)})p_{\theta}(x^{(i)}|z^{(i)})} {p_{\theta}(z^{(i)}|x^{(i)})}] $  (bayes)</p>
-<p>​                     $ = E_{z^{(i)}}[log \ \frac{p_{\theta}(z^{(i)})p_{\theta}(x^{(i)}|z^{(i)})} {p_{\theta}(z^{(i)}|x^{(i)})}   \frac {q_{\phi}(z^{(i)}|x^{(i)})} {q_{\phi}(z^{(i)}|x^{(i)})}] $</p>
-<p>​                      $=  E_{z^{(i)}}[log \ p_{\theta}(x^{(i)}|z^{(i)}) ]  - E_{z^{(i)}}[log \ \frac{q_{\phi}(z^{(i)}|x^{(i)})} {p_{\theta}(z^{(i)}}] +E_{z^{(i)}}[log \ \frac{q_{\phi}(z^{(i)}|x^{(i)})} {p_{\theta}(z^{(i)}|x^{(i)})}]  $</p>
-<p>​                      $=  E_{z^{(i)}}[log \ p_{\theta}(x^{(i)}|z^{(i)}) ]  -D_{KL}({q_{\phi}(z^{(i)}|x^{(i)})}|| {p_{\theta}(z^{(i)}})+ D_{KL}({q_{\phi}(z^{(i)}|x^{(i)})} ||{p_{\theta}(z^{(i)}|x^{(i)})}) $</p>
-<p>​                          <strong>reconstruction loss</strong>                *<em>KL loss *</em>                        $p_{\theta}(z^{(i)}|x^{(i)}) untractable, KL&gt;=0$</p>
+<p>Solution: In addition to decoder network modeling $p<em>θ (x|z)$, define additional encoder network $q</em>ɸ (z|x) $that approximates $p_θ (z|x)$</p>
+<p>$log \ p<em>{\theta}(x^{(i)}) = E</em>{z^{(i)}::q<em>{\phi}(z^{(i)}|x^{(i)})}[log \ p</em>{\theta}(x^{(i)})]$     ($ p_{\theta}(x^{(i)}$ does not depend on z)</p>
+<p>​                     $=  E<em>{z^{(i)}}[log \ \frac{p</em>{\theta}(z^{(i)})p<em>{\theta}(x^{(i)}|z^{(i)})} {p</em>{\theta}(z^{(i)}|x^{(i)})}] $  (bayes)</p>
+<p>​                     $ = E<em>{z^{(i)}}[log \ \frac{p</em>{\theta}(z^{(i)})p<em>{\theta}(x^{(i)}|z^{(i)})} {p</em>{\theta}(z^{(i)}|x^{(i)})}   \frac {q<em>{\phi}(z^{(i)}|x^{(i)})} {q</em>{\phi}(z^{(i)}|x^{(i)})}] $</p>
+<p>​                      $=  E<em>{z^{(i)}}[log \ p</em>{\theta}(x^{(i)}|z^{(i)}) ]  - E<em>{z^{(i)}}[log \ \frac{q</em>{\phi}(z^{(i)}|x^{(i)})} {p<em>{\theta}(z^{(i)}}] +E</em>{z^{(i)}}[log \ \frac{q<em>{\phi}(z^{(i)}|x^{(i)})} {p</em>{\theta}(z^{(i)}|x^{(i)})}]  $</p>
+<p>​                      $=  E<em>{z^{(i)}}[log \ p</em>{\theta}(x^{(i)}|z^{(i)}) ]  -D<em>{KL}({q</em>{\phi}(z^{(i)}|x^{(i)})}|| {p<em>{\theta}(z^{(i)}})+ D</em>{KL}({q<em>{\phi}(z^{(i)}|x^{(i)})} ||{p</em>{\theta}(z^{(i)}|x^{(i)})}) $</p>
+<p>​                          <strong>reconstruction loss</strong>                <strong>KL loss </strong>                        $p_{\theta}(z^{(i)}|x^{(i)}) untractable, KL&gt;=0$</p>
 <p>​                         <strong>Reparameterization</strong></p>
 <blockquote>
  <cs231n _2017_lecture13>
+
 </cs231n></blockquote>
 <p>Pros:</p>
 <ul>
@@ -454,15 +459,15 @@
 <li>Explicit density   显示的对$p(x)$进行建模</li>
 <li>Tractable density</li>
 </ul>
-<p>$x$<del>$p(x)$, $z$</del>$\pi(z)$ , $x = f(z)$   The function $f$ is invertible</p>
+<p>$x$~$p(x)$, $z$~$\pi(z)$ , $x = f(z)$   The function $f$ is invertible</p>
 <p>=&gt; $p(x)=\pi(z)|det(\frac{dz}{dx})|$</p>
 <p><img src="https://lilianweng.github.io/lil-log/assets/images/normalizing-flow.png" alt="Normalizing flow"></p>
-<p>=&gt; $p_i(z_i) = p_{i-1}(z_{i-1}) |det (\frac{dz_{i-1}}{dz_i})| =  p_{i-1}(z_{i-1}) |det ((\frac{dz_i}{dz_{i-1}})^{-1})| = p_{i-1}(z_{i-1}) |det (\frac{dz_i}{dz_{i-1}})|^{-1}$    </p>
+<p>=&gt; $p<em>i(z_i) = p</em>{i-1}(z<em>{i-1}) |det (\frac{dz</em>{i-1}}{dz<em>i})| =  p</em>{i-1}(z<em>{i-1}) |det ((\frac{dz_i}{dz</em>{i-1}})^{-1})| = p<em>{i-1}(z</em>{i-1}) |det (\frac{dz<em>i}{dz</em>{i-1}})|^{-1}$    </p>
 <blockquote>
 <p> because  $det(AB)=det(A)det(B)$   ,   $1 = det(AA^{-1})) = det(A)det(A^{-1})$  </p>
 </blockquote>
-<p>=&gt; $log \ p_i(z_i)  = log \ p_{i-1}(z_{i-1})  - log |det (\frac{dz_i}{dz_{i-1}})|$</p>
-<p>=&gt; $log \ p_i(z_i)  = log \ p_{0}(z_{0})  - \sum_{i=1}^{K} log |det (\frac{dz_i}{dz_{i-1}})|$</p>
+<p>=&gt; $log \ p<em>i(z_i)  = log \ p</em>{i-1}(z<em>{i-1})  - log |det (\frac{dz_i}{dz</em>{i-1}})|$</p>
+<p>=&gt; $log \ p<em>i(z_i)  = log \ p</em>{0}(z<em>{0})  - \sum</em>{i=1}^{K} log |det (\frac{dz<em>i}{dz</em>{i-1}})|$</p>
 <p>Required by the computation in the equation, a transformation function fifi should satisfy two properties:</p>
 <ol>
 <li>It is easily invertible.  (easy to generate data)</li>
@@ -471,12 +476,12 @@
 <h2 id="autoregressive"><a href="#autoregressive" class="headerlink" title="autoregressive"></a>autoregressive</h2><blockquote>
 <p>Examples of such functions are autoregressive neural density estimators such as RNNs, MADE (Germain et al., 2015), PixelCNN (van den Oord et al., 2016b) or WaveNet (van den Oord et al., 2016a) models.</p>
 <improved variational inference with inverse autoregressive flow>
+
 </improved></blockquote>
-<p>###PixelRNN   /   PixelCNN  /  Wavenet</p>
-<p><strong>define tractable density function</strong></p>
-<p>优化目标： maximize $p(x) = \prod_{i=1}^n \ p(x_i|x_1,x_2,…,x_{i-1})$</p>
+<h3 id="PixelRNN-PixelCNN-Wavenet"><a href="#PixelRNN-PixelCNN-Wavenet" class="headerlink" title="PixelRNN   /   PixelCNN  /  Wavenet"></a>PixelRNN   /   PixelCNN  /  Wavenet</h3><p><strong>define tractable density function</strong></p>
+<p>优化目标： maximize $p(x) = \prod<em>{i=1}^n \ p(x_i|x_1,x_2,…,x</em>{i-1})$</p>
 <ul>
-<li>用神经网络(RNN/CNN)描述$p(x_i|x_1,x_2,…,x_{i-1})$</li>
+<li>用神经网络(RNN/CNN)描述$p(x<em>i|x_1,x_2,…,x</em>{i-1})$</li>
 <li>Softmax 计算概率(神经网络输出N个值,经过softmax归一化为N个类别的概率值)  </li>
 <li>cross entropy计算loss</li>
 <li>argmax采样 | 按照softmax probability随机采样</li>
@@ -497,7 +502,7 @@
 <ul>
 <li>Gaussian loss   （神经网络预测mean &amp; scale）</li>
 </ul>
-<p>​         $x_t=z_t*\sigma(x_{&lt;t})+\mu(x_{&lt;t})$   其中$\sigma()$和$\mu()$均为神经网络,    $z_t$服从高斯分布</p>
+<p>​         $x<em>t=z_t*\sigma(x</em>{&lt;t})+\mu(x_{&lt;t})$   其中$\sigma()$和$\mu()$均为神经网络,    $z_t$服从高斯分布</p>
 <p>​         神经网络输出2个值：$\mu   ,  log \ \sigma$       ( $log \ \sigma$ 可正可负)</p>
 <ul>
 <li><p>Discretized logistic loss</p>
@@ -505,8 +510,7 @@
 <p>神经网络输出3M个值</p>
 </li>
 </ul>
-<h2 id="Inverse-Autoregressive-Flow"><a href="#Inverse-Autoregressive-Flow" class="headerlink" title="Inverse Autoregressive Flow"></a>Inverse Autoregressive Flow</h2><p>###parallel wavenet</p>
-
+<h2 id="Inverse-Autoregressive-Flow"><a href="#Inverse-Autoregressive-Flow" class="headerlink" title="Inverse Autoregressive Flow"></a>Inverse Autoregressive Flow</h2><h3 id="parallel-wavenet"><a href="#parallel-wavenet" class="headerlink" title="parallel wavenet"></a>parallel wavenet</h3>
       
     </div>
     
@@ -652,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic"><span class="nav-number">1.</span> <span class="nav-text">Basic</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#KL"><span class="nav-number">1.1.</span> <span class="nav-text">KL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jensen-不等式"><span class="nav-number">1.2.</span> <span class="nav-text">Jensen 不等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#discretized-distribution"><span class="nav-number">1.3.</span> <span class="nav-text">discretized distribution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数估计：（分布已知，参数未知）"><span class="nav-number">2.</span> <span class="nav-text">参数估计：（分布已知，参数未知）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EM"><span class="nav-number">3.</span> <span class="nav-text">EM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VAE"><span class="nav-number">4.</span> <span class="nav-text">VAE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Senario"><span class="nav-number">4.1.</span> <span class="nav-text">Problem Senario</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flow"><span class="nav-number">5.</span> <span class="nav-text">Flow</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#autoregressive"><span class="nav-number">5.1.</span> <span class="nav-text">autoregressive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inverse-Autoregressive-Flow"><span class="nav-number">5.2.</span> <span class="nav-text">Inverse Autoregressive Flow</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic"><span class="nav-number">1.</span> <span class="nav-text">Basic</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#KL"><span class="nav-number">1.1.</span> <span class="nav-text">KL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jensen-不等式"><span class="nav-number">1.2.</span> <span class="nav-text">Jensen 不等式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#discretized-distribution"><span class="nav-number">1.3.</span> <span class="nav-text">discretized distribution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数估计：（分布已知，参数未知）"><span class="nav-number">2.</span> <span class="nav-text">参数估计：（分布已知，参数未知）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EM"><span class="nav-number">3.</span> <span class="nav-text">EM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VAE"><span class="nav-number">4.</span> <span class="nav-text">VAE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Senario"><span class="nav-number">4.1.</span> <span class="nav-text">Problem Senario</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flow"><span class="nav-number">5.</span> <span class="nav-text">Flow</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#autoregressive"><span class="nav-number">5.1.</span> <span class="nav-text">autoregressive</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PixelRNN-PixelCNN-Wavenet"><span class="nav-number">5.1.1.</span> <span class="nav-text">PixelRNN   /   PixelCNN  /  Wavenet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inverse-Autoregressive-Flow"><span class="nav-number">5.2.</span> <span class="nav-text">Inverse Autoregressive Flow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#parallel-wavenet"><span class="nav-number">5.2.1.</span> <span class="nav-text">parallel wavenet</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
