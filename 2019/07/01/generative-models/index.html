@@ -87,7 +87,7 @@
 <meta property="og:description" content="BasicKL$D_{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E_{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://lilianweng.github.io/lil-log/assets/images/normalizing-flow.png">
-<meta property="og:updated_time" content="2019-07-02T03:24:23.048Z">
+<meta property="og:updated_time" content="2019-07-02T03:26:33.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Generative models">
 <meta name="twitter:description" content="BasicKL$D_{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E_{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么">
@@ -359,9 +359,9 @@
 <ul>
 <li>优化目标：maximize $log p(X)$</li>
 </ul>
-<p>$log p(X;\theta) = \sum_i log   p(x^{(i)};\theta) = \sum_i log \sum_{z^{(i)}} p(x^{(i)},z^{(i)};\theta)$       <strong>$x^{(i)}$是常数，$\theta$和$z^{(i)}$是变量</strong></p>
+<p>$log p(X;\theta) = \sum_i log   p(x^{(i)};\theta) = \sum_i log \sum_{z^{(i)}} p(x^{(i)},z^{(i)};\theta)  $       <strong>$ x^{(i)}$是常数，$\theta$和$z^{(i)}$是变量</strong></p>
 <p>​                   $=\sum_i log \sum_{z^{(i)}} Q_i(z^{(i)}) \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z_{(i)})} $</p>
-<p>​                    $&gt;=\sum_i \sum_{z^{(i)}} Q_i(z^{(i)}) log \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z_{(i)})} $       <strong>Jensen不等式  和的对数-&gt;对数的和，便于求导</strong></p>
+<p>​                    $&gt;=\sum_i \sum_{z^{(i)}} Q_i(z^{(i)}) log \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z_{(i)})} ​$       <strong>Jensen不等式  和的对数-&gt;对数的和，便于求导</strong></p>
 <p>初始化分布参数$\theta$</p>
 <p>E:  根据参数初始值或上一次迭代的模型参数来计算出后验概率 $Q_i(z^{(i)})  = p(z^{(i)}|x^{(i)} ;\theta)$</p>
 <p>M:  将似然函数最大化以获得新的参数值  $\theta := argmax_{\theta}\sum_i \sum_{z^{(i)}} Q_i(z^{(i)}) log \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z_{(i)})} $</p>
