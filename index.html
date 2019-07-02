@@ -327,17 +327,13 @@
 </ul>
 <p>What is “mixture distribution”?</p>
 <ul>
-<li><p>A variable may have multiple  modes, so a single distribution is hard to model such a variable.</p>
-</li>
-<li><p>$p(x|\theta) = \sum_{i=1}^K w_ip_i(x|\theta_i)$  Where K is the number of components, θ is the parameter set.</p>
-</li>
+<li>A variable may have multiple  modes, so a single distribution is hard to model such a variable.</li>
+<li>$p(x|\theta) = \sum_{i=1}^K w_ip_i(x|\theta_i)$  Where K is the number of components, θ is the parameter set.</li>
 </ul>
 <p>A softmax distribution can do that task as  well, why don’t use it?</p>
 <ul>
-<li><p>When the number of the valid dots is big, using softmax is inefficient. 256-way softmax is good, but the 65536-way is a disaster.</p>
-</li>
-<li><p>Softmax can’t utilize the inherent structure of continuous number</p>
-</li>
+<li>When the number of the valid dots is big, using softmax is inefficient. 256-way softmax is good, but the 65536-way is a disaster.</li>
+<li>Softmax can’t utilize the inherent structure of continuous number</li>
 </ul>
 <p>How to use it in training?</p>
 <ul>

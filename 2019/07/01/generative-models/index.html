@@ -87,7 +87,7 @@
 <meta property="og:description" content="BasicKL$D_{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E_{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://lilianweng.github.io/lil-log/assets/images/normalizing-flow.png">
-<meta property="og:updated_time" content="2019-07-02T03:21:27.442Z">
+<meta property="og:updated_time" content="2019-07-02T03:24:23.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Generative models">
 <meta name="twitter:description" content="BasicKL$D_{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E_{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么">
@@ -328,17 +328,13 @@
 </ul>
 <p>What is “mixture distribution”?</p>
 <ul>
-<li><p>A variable may have multiple  modes, so a single distribution is hard to model such a variable.</p>
-</li>
-<li><p>$p(x|\theta) = \sum_{i=1}^K w_ip_i(x|\theta_i)$  Where K is the number of components, θ is the parameter set.</p>
-</li>
+<li>A variable may have multiple  modes, so a single distribution is hard to model such a variable.</li>
+<li>$p(x|\theta) = \sum_{i=1}^K w_ip_i(x|\theta_i)$  Where K is the number of components, θ is the parameter set.</li>
 </ul>
 <p>A softmax distribution can do that task as  well, why don’t use it?</p>
 <ul>
-<li><p>When the number of the valid dots is big, using softmax is inefficient. 256-way softmax is good, but the 65536-way is a disaster.</p>
-</li>
-<li><p>Softmax can’t utilize the inherent structure of continuous number</p>
-</li>
+<li>When the number of the valid dots is big, using softmax is inefficient. 256-way softmax is good, but the 65536-way is a disaster.</li>
+<li>Softmax can’t utilize the inherent structure of continuous number</li>
 </ul>
 <p>How to use it in training?</p>
 <ul>
