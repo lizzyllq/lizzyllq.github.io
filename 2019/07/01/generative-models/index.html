@@ -87,7 +87,7 @@
 <meta property="og:description" content="BasicKL$D_{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E_{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://lilianweng.github.io/lil-log/assets/images/normalizing-flow.png">
-<meta property="og:updated_time" content="2019-07-02T02:56:57.355Z">
+<meta property="og:updated_time" content="2019-07-02T03:21:27.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Generative models">
 <meta name="twitter:description" content="BasicKL$D_{KL}(p(x)||q(x)) = \int p(x) log \frac{p(x)}{q(x)} dx = E_{x::p(x)} (log \frac{p(x)}{q(x)})$ Jensen 不等式 设f是定义域为实数的函数，如果对于所有的实数x。如果对于所有的实数x，f(x)的二次导数大于等于0，那么f是凸函数。当x是向量时，如果其hessian矩阵H是半正定的，那么">
@@ -314,7 +314,6 @@
 <li>Only continuous probability distribution can be differentiated.</li>
 <li>So, we need a discretized version of a continuous probability distribution.</li>
 </ul>
-<hr>
 <p>Given a distribution,  $P(. | θ)$ is the probability density function (PDF), $F(. | θ)$ is the cumulative density function (CDF), $\theta$ is the parameter set.</p>
 <p>Given a set $X= \{x^0, x^1, …, x^{m} \}$ where $x^i \in ℝ$, the probability mass function (PMF) is $P(x^i | θ) = F(x^i + Δ | θ) - F(x^i - Δ | θ)$</p>
 <p>It’s easy to compute the gradients of a PMF. E.g.  Logistic distribution</p>
@@ -327,7 +326,6 @@
 </li>
 <li>使用logistic分布的原因是其discretized PDF的函数形式简单（两个sigmoid相减），计算代价低)</li>
 </ul>
-<hr>
 <p>What is “mixture distribution”?</p>
 <ul>
 <li><p>A variable may have multiple  modes, so a single distribution is hard to model such a variable.</p>
@@ -342,7 +340,6 @@
 <li><p>Softmax can’t utilize the inherent structure of continuous number</p>
 </li>
 </ul>
-<hr>
 <p>How to use it in training?</p>
 <ul>
 <li>Use the discretized version to  calculate the likelihoods. It’s easy to back propagate.</li>
