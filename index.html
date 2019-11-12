@@ -358,7 +358,7 @@
 <ul>
 <li>优化目标：maximize $log p(X)$</li>
 </ul>
-<p>$log p(X;\theta) = \sum_i log   p(x^{(i)};\theta) = \sum_i log \sum_{z^{(i)}} p(x^{(i)},z^{(i)};\theta)  $       <strong>$ x^{(i)}$是常数，$\theta$和$z^{(i)}$是变量</strong></p>
+<p>$log p(X;\theta) = \sum_i log   p(x^{(i)};\theta) = \sum_i log \sum_{z^{(i)}} p(x^{(i)},z^{(i)};\theta)  $                <strong>$ x^{(i)}$是常数，$\theta$和$z^{(i)}$是变量</strong></p>
 <p>​                   $=\sum_i log \sum_{z^{(i)}} Q_i(z^{(i)}) \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z_{(i)})} $</p>
 <p>​                    $&gt;=\sum_i \sum_{z^{(i)}} Q_i(z^{(i)}) log \frac{p(x^{(i)},z^{(i)};\theta)}{Q^i(z_{(i)})} ​$       <strong>Jensen不等式  和的对数-&gt;对数的和，便于求导</strong></p>
 <p>初始化分布参数$\theta$</p>
@@ -451,7 +451,6 @@
 <ul>
 <li>Sequential generation =&gt; slow (CNN训练可并行，但生成还是序列化的)</li>
 </ul>
-<hr>
 <p>改进的loss: </p>
 <p>根据data的连续或离散选取连续分布或者离散化的分布</p>
 <ul>
