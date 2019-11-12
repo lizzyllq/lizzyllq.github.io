@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="判别模型Linear regression假设回归事件为输入x的线性函数：$y=\theta^Tx$ 概率解释：$y=\theta^Tx+ \varepsilon$, 其中$\varepsilon$符合正太分布$N(0,\sigma^2)$ 最大似然分布 $L(\theta)= \prod p(y^{(i)}|x^{(i)},\theta)= \prod \frac{1}{\sqrt{2\pi}\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine learning">
+<meta property="og:url" content="http://yoursite.com/2019/11/12/机器学习/index.html">
+<meta property="og:site_name" content="Forward">
+<meta property="og:description" content="判别模型Linear regression假设回归事件为输入x的线性函数：$y=\theta^Tx$ 概率解释：$y=\theta^Tx+ \varepsilon$, 其中$\varepsilon$符合正太分布$N(0,\sigma^2)$ 最大似然分布 $L(\theta)= \prod p(y^{(i)}|x^{(i)},\theta)= \prod \frac{1}{\sqrt{2\pi}\">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://img.blog.csdn.net/20160909001936276">
+<meta property="og:updated_time" content="2019-11-12T14:06:33.602Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine learning">
+<meta name="twitter:description" content="判别模型Linear regression假设回归事件为输入x的线性函数：$y=\theta^Tx$ 概率解释：$y=\theta^Tx+ \varepsilon$, 其中$\varepsilon$符合正太分布$N(0,\sigma^2)$ 最大似然分布 $L(\theta)= \prod p(y^{(i)}|x^{(i)},\theta)= \prod \frac{1}{\sqrt{2\pi}\">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20160909001936276">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/12/机器学习/">
+
+
+
+
+
+  <title>Machine learning | Forward</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Forward</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/12/机器学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizzy llq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Forward">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Machine learning</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-12T22:06:30+08:00">
+                2019-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="判别模型"><a href="#判别模型" class="headerlink" title="判别模型"></a>判别模型</h1><h2 id="Linear-regression"><a href="#Linear-regression" class="headerlink" title="Linear regression"></a>Linear regression</h2><p>假设回归事件为输入x的线性函数：$y=\theta^Tx$</p>
+<p>概率解释：$y=\theta^Tx+ \varepsilon$, 其中$\varepsilon$符合正太分布$N(0,\sigma^2)$</p>
+<p>最大似然分布 $L(\theta)= \prod p(y^{(i)}|x^{(i)},\theta)= \prod \frac{1}{\sqrt{2\pi}\sigma}e^{- \frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2}}$</p>
+<p>对数似然: $l(\theta)=log L(\theta)=\sum log  \frac{1}{\sqrt{2\pi}\sigma}+\sum - \frac{(y^{(i)}-\theta^Tx^{(i)})^2}{2\sigma^2}$</p>
+<p>最大化对数似然等价于最小化平方差和</p>
+<h2 id="Logistic-regression"><a href="#Logistic-regression" class="headerlink" title="Logistic regression"></a>Logistic regression</h2><h3 id="二分类问题"><a href="#二分类问题" class="headerlink" title="二分类问题"></a>二分类问题</h3><p>假设二分类事件的对数几率是输入x的线性函数</p>
+<p>$p ： p(y=1) ，log\frac{p}{1-p}=\theta^Tx =&gt; p=\frac{1}{1+e^{-\theta^Tx}}=h_{\theta}(x)$</p>
+<p>最大似然分布 $L(\theta)=\prod p(y^{(i)}|x^{(i)},\theta)=\prod h_{\theta}(x^{(i)})^{y^{(i)}}(1-h_{\theta}(x^{(i)})^{1-y^{(i)}}$</p>
+<p>对数似然：$l(\theta)=log L(\theta)=\sum y^{(i)} log[h_{\theta}(x^{(i)}) ]+ (1-y^{(i)}) log [ (1- h_{\theta}(x^{(i)}) )]$</p>
+<hr>
+<p>Sigmoid function $\sigma(x)=\frac{1}{1+e^{-x}}, \sigma’(x)=\sigma(x)(1-\sigma(x))$</p>
+<p>梯度下降，拟牛顿法</p>
+<h3 id="多分类问题"><a href="#多分类问题" class="headerlink" title="多分类问题"></a>多分类问题</h3><p>对数似然 $l(\theta)=log L(\theta)=\sum I\{y^{(i)} =1\}\phi_1+…+I\{y^{(i)} =k\}\phi_k$ </p>
+<p>$\phi_i=\frac{e^{\theta_i^Tx}}{1+ \sum_{j=1}^{k-1} e^{\theta_j^Tx}} (i=1,2,…,k-1)$</p>
+<p>$\phi_k = 1-\phi_1-…-\phi_{k-1}$</p>
+<h3 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h3><p>cross entropy loss : $l=-\sum y^{(i)’}log(y^{(i)})$</p>
+<p>$y^{(i)’}$为ground truth, $y^{(i)}$为预测值</p>
+<h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><h3 id="梯度下降算法"><a href="#梯度下降算法" class="headerlink" title="梯度下降算法"></a>梯度下降算法</h3><p><a href="https://blog.csdn.net/edogawachia/article/details/80071967" target="_blank" rel="noopener">https://blog.csdn.net/edogawachia/article/details/80071967</a></p>
+<h4 id="批量梯度下降BGD"><a href="#批量梯度下降BGD" class="headerlink" title="批量梯度下降BGD"></a>批量梯度下降BGD</h4><blockquote>
+<p>批量梯度下降法更新一次参数需要计算整个数据集所有样本的梯度，因此更新速度非常慢，对于凸优化问题会收敛到全局最优点、而非凸优化问题则会收敛到局部最优点，这种方法有可能无法将大量的数据放入内存，也不能进行在线学习.</p>
+</blockquote>
+<p>$\theta_t = \theta_{t-1} - \alpha L’(\theta_{t-1}) , $ $L$为损失函数</p>
+<h4 id="随机梯度下降SGD"><a href="#随机梯度下降SGD" class="headerlink" title="随机梯度下降SGD"></a>随机梯度下降SGD</h4><blockquote>
+<p>随机梯度下降法更新一次参数只需计算一个样本的梯度，更新速度很快、参数方差波动大，适用于在线学习，有可能跳出局部最优到达全局最优。训练时每个epoch结束后注意必须要shuffle训练集.</p>
+</blockquote>
+<p>$\theta_t = \theta_{t-1} - \alpha L’(\theta_{t-1},x^{(i)}, y^{(i)}) $</p>
+<h4 id="小批量梯度下降MBGD"><a href="#小批量梯度下降MBGD" class="headerlink" title="小批量梯度下降MBGD"></a>小批量梯度下降MBGD</h4><blockquote>
+<p>小批量梯度下降法既减少了SGD参数方差的波动性，又可以利用深度学习库中高度优化的矩阵运算的便捷性，一般mini-batch size在50到256之间，每次参数更新计算小批量样本的梯度，也需要在每个epoch后shuffle数据集</p>
+</blockquote>
+<p>$\theta_t = \theta_{t-1} - \alpha L’(\theta_{t-1},x^{(i:i+n)}, y^{(i:i+n)}) ​$</p>
+<hr>
+<h4 id="Momentum"><a href="#Momentum" class="headerlink" title="Momentum"></a>Momentum</h4><blockquote>
+<p>Momentum是模拟物理学动量的概念，累积之前的动量加入梯度，能够在相关方向加速SGD，抑制震荡，从而加快收敛速度</p>
+<p>通过加入衰减分量γ更新向量v，一般$\gamma$=0.9或其他类似的值，令早期的梯度对当前的梯度影响越来越小，如果没有衰减值，模型往往会震荡、难以收敛，甚至发散</p>
+</blockquote>
+<p>$v_t=\gamma v_{t-1}+\alpha L’(\theta_{t-1})$</p>
+<p>$\theta_{t}=\theta_{t-1}-v_t$</p>
+<h4 id="Nesterov-Momentum"><a href="#Nesterov-Momentum" class="headerlink" title="Nesterov Momentum"></a>Nesterov Momentum</h4><blockquote>
+<p>Nesterov Momentum是基于Momentum的加速算法，相比于传统的动量算法，最大的优化是计算经过动量更新之后的位置梯度</p>
+</blockquote>
+<p>$v_t=\gamma v_{t-1}+\alpha L’(\theta_{t-1}-\gamma v_{t-1})$</p>
+<p>$\theta_{t}=\theta_{t-1}-v_t$</p>
+<hr>
+<h4 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h4><blockquote>
+<p>Adagrad通过累积梯度约束学习率，提升SGD的robustness，并且能让不频繁出现的参数进行较大的更新、频繁出现的参数进行较小的更新，尤其适用于稀疏数据的情况。每一步每个参数的学习率都不相同.</p>
+<p>一般$\alpha$=0.01</p>
+</blockquote>
+<p>$g_{t,i}=L’(\theta_{t,i})$</p>
+<p>$\theta_{t,i}=\theta_{t-1,i}-\frac{\alpha}{\sqrt{G_{t-1,i}+\varepsilon}}g_{t-1,i}$</p>
+<p>$G_{t,i}=G_{t-1,i}+g_{t,i}$</p>
+<h4 id="Rmsprop"><a href="#Rmsprop" class="headerlink" title="Rmsprop  "></a>Rmsprop  </h4><blockquote>
+<p>RMSprop减少了Adagrad中学习速率衰减过快问题,采用指数衰退平均的计算方法，用过往梯度的均值代替他们的求和</p>
+<p>超参数设置建议为$\gamma=0.9，\alpha=0.001$</p>
+</blockquote>
+<p>$E[g^2]_t=γE[g^2]_{t−1}+(1−γ)g^2_t $</p>
+<p>$\theta_{t}=\theta_{t-1}-\frac{\alpha}{\sqrt{E[g^2]_{t-1}+\varepsilon}}g_{t-1}$</p>
+<h4 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h4><blockquote>
+<p>Adam即Adaptive Moment Estimation，是能够自适应时刻的估计方法，能够针对每个参数，计算自适应学习率。这是一种综合性的优化方法，在机器学习实际训练中，往往能够取得不错的效果</p>
+<p>超参数设置建议为 $\beta _{1}=0.9,\beta _{2}=0.999, \varepsilon =10^{-8}$</p>
+</blockquote>
+<p>$m_t=β_1m_{t−1}+(1−β_1)g_t$</p>
+<p>$v_t=β_2v_{t−1}+(1−β_2)g^2_t$</p>
+<p> $m_t$与$v_t$各自是梯度的带权平均和带权有偏方差，初始为0向量，Adam的作者发现他们倾向于0向量(接近于0向量)，特别是在衰减因子(衰减率)β1,β2接近于1时。为了改进这个问题，对$m_t$与$v_t$进行偏差修正(bias-corrected) </p>
+<p>$ \hat{m_t}=\frac{m_t}{1-\beta_1^t}$</p>
+<p>$ \hat{v_t}=\frac{v_t}{1-\beta_2^t}$</p>
+<p>$\theta_{t}=\theta_{t-1}-\frac{\alpha}{\sqrt{\hat{v_{t-1}}+\varepsilon}}\hat{m_{t-1}}$</p>
+<p><img src="http://img.blog.csdn.net/20160909001936276" alt="saddle_point_evaluation_optimizers"></p>
+<p>从上图能够看出。 Adagrad、Adadelta与RMSprop在损失曲面上能够马上转移到正确的移动方向上达到高速的收敛。而Momentum 与NAG会导致偏离(off-track)。同一时候NAG能够在偏离之后高速修正其路线，由于其依据梯度修正来提高响应性。</p>
+<h2 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h2><h1 id="生成模型"><a href="#生成模型" class="headerlink" title="生成模型"></a>生成模型</h1><h2 id="高斯判别分析"><a href="#高斯判别分析" class="headerlink" title="高斯判别分析"></a>高斯判别分析</h2><h2 id="naive-bayes"><a href="#naive-bayes" class="headerlink" title="naive bayes"></a>naive bayes</h2><h3 id="多元伯努利事件模型"><a href="#多元伯努利事件模型" class="headerlink" title="多元伯努利事件模型"></a>多元伯努利事件模型</h3><h2 id="多项式事件模型"><a href="#多项式事件模型" class="headerlink" title="多项式事件模型"></a>多项式事件模型</h2><h2 id="高斯混合模型"><a href="#高斯混合模型" class="headerlink" title="高斯混合模型"></a>高斯混合模型</h2><h2 id="EM"><a href="#EM" class="headerlink" title="EM"></a>EM</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/12/Tensorflow/" rel="next" title="Tensorflow learning">
+                <i class="fa fa-chevron-left"></i> Tensorflow learning
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">lizzy llq</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#判别模型"><span class="nav-number">1.</span> <span class="nav-text">判别模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-regression"><span class="nav-number">1.1.</span> <span class="nav-text">Linear regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic-regression"><span class="nav-number">1.2.</span> <span class="nav-text">Logistic regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分类问题"><span class="nav-number">1.2.1.</span> <span class="nav-text">二分类问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分类问题"><span class="nav-number">1.2.2.</span> <span class="nav-text">多分类问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉熵"><span class="nav-number">1.2.3.</span> <span class="nav-text">交叉熵</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#神经网络"><span class="nav-number">2.</span> <span class="nav-text">神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反向传播"><span class="nav-number">2.0.1.</span> <span class="nav-text">反向传播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降算法"><span class="nav-number">2.0.2.</span> <span class="nav-text">梯度下降算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#批量梯度下降BGD"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">批量梯度下降BGD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机梯度下降SGD"><span class="nav-number">2.0.2.2.</span> <span class="nav-text">随机梯度下降SGD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小批量梯度下降MBGD"><span class="nav-number">2.0.2.3.</span> <span class="nav-text">小批量梯度下降MBGD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Momentum"><span class="nav-number">2.0.2.4.</span> <span class="nav-text">Momentum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nesterov-Momentum"><span class="nav-number">2.0.2.5.</span> <span class="nav-text">Nesterov Momentum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adagrad"><span class="nav-number">2.0.2.6.</span> <span class="nav-text">Adagrad</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Rmsprop"><span class="nav-number">2.0.2.7.</span> <span class="nav-text">Rmsprop  </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adam"><span class="nav-number">2.0.2.8.</span> <span class="nav-text">Adam</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM"><span class="nav-number">2.1.</span> <span class="nav-text">SVM</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#生成模型"><span class="nav-number">3.</span> <span class="nav-text">生成模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯判别分析"><span class="nav-number">3.1.</span> <span class="nav-text">高斯判别分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#naive-bayes"><span class="nav-number">3.2.</span> <span class="nav-text">naive bayes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多元伯努利事件模型"><span class="nav-number">3.2.1.</span> <span class="nav-text">多元伯努利事件模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项式事件模型"><span class="nav-number">3.3.</span> <span class="nav-text">多项式事件模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高斯混合模型"><span class="nav-number">3.4.</span> <span class="nav-text">高斯混合模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EM"><span class="nav-number">3.5.</span> <span class="nav-text">EM</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lizzy llq</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

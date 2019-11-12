@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Overview of tensorflowhttp://web.stanford.edu/class/cs20si/syllabus.html https://www.tensorflow.org/api_docs/ https://github.com/tensorflow/models TensorFlow separates definition of computations from">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tensorflow learning">
+<meta property="og:url" content="http://yoursite.com/2019/11/12/Tensorflow/index.html">
+<meta property="og:site_name" content="Forward">
+<meta property="og:description" content="Overview of tensorflowhttp://web.stanford.edu/class/cs20si/syllabus.html https://www.tensorflow.org/api_docs/ https://github.com/tensorflow/models TensorFlow separates definition of computations from">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-12T14:06:14.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tensorflow learning">
+<meta name="twitter:description" content="Overview of tensorflowhttp://web.stanford.edu/class/cs20si/syllabus.html https://www.tensorflow.org/api_docs/ https://github.com/tensorflow/models TensorFlow separates definition of computations from">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/12/Tensorflow/">
+
+
+
+
+
+  <title>Tensorflow learning | Forward</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Forward</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/12/Tensorflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lizzy llq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Forward">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Tensorflow learning</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-12T22:06:30+08:00">
+                2019-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Overview-of-tensorflow"><a href="#Overview-of-tensorflow" class="headerlink" title="Overview of tensorflow"></a>Overview of tensorflow</h1><p><a href="http://web.stanford.edu/class/cs20si/syllabus.html" target="_blank" rel="noopener">http://web.stanford.edu/class/cs20si/syllabus.html</a></p>
+<p><a href="https://www.tensorflow.org/api_docs/" target="_blank" rel="noopener">https://www.tensorflow.org/api_docs/</a></p>
+<p><a href="https://github.com/tensorflow/models" target="_blank" rel="noopener">https://github.com/tensorflow/models</a></p>
+<p><strong>TensorFlow separates definition of computations from their execution</strong></p>
+<ul>
+<li>Phase 1: assemble a graph </li>
+<li>Phase 2: use a session to execute operations in the graph.</li>
+</ul>
+<p>Nodes: operators, variables, and constants</p>
+<p>Edges: tensors</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">tf.Tensor</span><br><span class="line"><span class="string">'''Represents one of the outputs of an `Operation`.</span></span><br><span class="line"><span class="string">  A `Tensor` is a symbolic handle to one of the outputs of an</span></span><br><span class="line"><span class="string">  `Operation`. It does not hold the values of that operation's output,</span></span><br><span class="line"><span class="string">  but instead provides a means of computing those values in a</span></span><br><span class="line"><span class="string">  TensorFlow `tf.compat.v1.Session`.</span></span><br><span class="line"><span class="string">  This class has two primary purposes:</span></span><br><span class="line"><span class="string">  1. A `Tensor` can be passed as an input to another `Operation`.</span></span><br><span class="line"><span class="string">     This builds a dataflow connection between operations, which</span></span><br><span class="line"><span class="string">     enables TensorFlow to execute an entire `Graph` that represents a</span></span><br><span class="line"><span class="string">     large, multi-step computation.</span></span><br><span class="line"><span class="string">  2. After the graph has been launched in a session, the value of the</span></span><br><span class="line"><span class="string">     `Tensor` can be computed by passing it to</span></span><br><span class="line"><span class="string">     `tf.Session.run`.</span></span><br><span class="line"><span class="string">     `t.eval()` is a shortcut for calling</span></span><br><span class="line"><span class="string">     `tf.compat.v1.get_default_session().run(t)`.</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>Operation</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入的python变量会被转为对应的张量  (operation:const)</span></span><br><span class="line">x = ops.convert_to_tensor(x, name=<span class="string">"x"</span>)</span><br></pre></td></tr></table></figure>
+<p>Session</p>
+<ul>
+<li>A Session object encapsulates the environment in which Operation objects are executed, and Tensor objects are evaluated.</li>
+<li>Session will also allocate memory to store the current values of variables.</li>
+</ul>
+<p>Graph</p>
+<ul>
+<li><p>default graph: The session runs the default graph </p>
+</li>
+<li><p>Better not to use Multiple graph</p>
+<ul>
+<li>Multiple graphs require multiple sessions, each will try to use all available resources by default</li>
+<li>Can’t pass data between them without passing them through python/numpy, which doesn’t work in distributed</li>
+<li>It’s better to have disconnected subgraphs within one graph</li>
+</ul>
+</li>
+</ul>
+<p>Why Graph?</p>
+<ul>
+<li>Save computation. Only run subgraphs that lead to the values you want to fetch.</li>
+<li>Break computation into small, differential pieces to facilitate auto-differentiation</li>
+<li>Facilitate distributed computation, spread the work across multiple CPUs, GPUs, TPUs, or other devices</li>
+<li>Many common machine learning models are taught and visualized as directed graphs</li>
+</ul>
+<h1 id="Basis-operatons"><a href="#Basis-operatons" class="headerlink" title="Basis operatons"></a>Basis operatons</h1><h2 id="tensorboard"><a href="#tensorboard" class="headerlink" title="tensorboard"></a>tensorboard</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">'TF_CPP_MIN_LOG_LEVEL'</span>]=<span class="string">'2'</span></span><br><span class="line"><span class="comment"># no more warnings</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">a = tf.constant(<span class="number">2</span>) </span><br><span class="line">b = tf.constant(<span class="number">3</span>) </span><br><span class="line">x = tf.add(a, b)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the summary writer after graph definition and before running your session</span></span><br><span class="line">writer = tf.summary.FileWriter(<span class="string">'./graphs'</span>, tf.get_default_graph())</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    <span class="comment"># writer = tf.summary.FileWriter('./graphs', sess.graph)</span></span><br><span class="line">    print(sess.run(x)) </span><br><span class="line">    <span class="comment"># Print out the graph def</span></span><br><span class="line">    print(sess.graph.as_graph_def())</span><br><span class="line">    writer.close() <span class="comment"># close the writer when you’re done using it</span></span><br></pre></td></tr></table></figure>
+<p>Go to Terminal, run:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python3 [yourprogram].py </span><br><span class="line">$ tensorboard --logdir=&quot;./graphs&quot; --port 6006   (6006 or any port you want)</span><br><span class="line">Then open your browser and go to: http://localhost:6006/</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span></span><br><span class="line">node &#123;</span><br><span class="line">  name: <span class="string">"Const"</span></span><br><span class="line">  op: <span class="string">"Const"</span></span><br><span class="line">  attr &#123;</span><br><span class="line">    key: <span class="string">"dtype"</span></span><br><span class="line">    value &#123;</span><br><span class="line">      type: DT_INT32</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  attr &#123;</span><br><span class="line">    key: <span class="string">"value"</span></span><br><span class="line">    value &#123;</span><br><span class="line">      tensor &#123;</span><br><span class="line">        dtype: DT_INT32</span><br><span class="line">        tensor_shape &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        int_val: <span class="number">2</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">node &#123;</span><br><span class="line">  name: <span class="string">"Const_1"</span></span><br><span class="line">  op: <span class="string">"Const"</span></span><br><span class="line">  attr &#123;</span><br><span class="line">    key: <span class="string">"dtype"</span></span><br><span class="line">    value &#123;</span><br><span class="line">      type: DT_INT32</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  attr &#123;</span><br><span class="line">    key: <span class="string">"value"</span></span><br><span class="line">    value &#123;</span><br><span class="line">      tensor &#123;</span><br><span class="line">        dtype: DT_INT32</span><br><span class="line">        tensor_shape &#123;</span><br><span class="line">        &#125;</span><br><span class="line">        int_val: <span class="number">3</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">node &#123;</span><br><span class="line">  name: <span class="string">"Add"</span></span><br><span class="line">  op: <span class="string">"Add"</span></span><br><span class="line">  input: <span class="string">"Const"</span></span><br><span class="line">  input: <span class="string">"Const_1"</span></span><br><span class="line">  attr &#123;</span><br><span class="line">    key: <span class="string">"T"</span></span><br><span class="line">    value &#123;</span><br><span class="line">      type: DT_INT32</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">versions &#123;</span><br><span class="line">  producer: <span class="number">38</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tf.constant( value, dtype=<span class="literal">None</span>, shape=<span class="literal">None</span>, name=<span class="string">'Const'</span>, verify_shape=<span class="literal">False</span> )</span><br><span class="line"><span class="comment"># tf.constant is an op</span></span><br></pre></td></tr></table></figure>
+<p><strong>Constants are stored in the graph definition</strong></p>
+<ul>
+<li>This makes loading graphs expensive when constants are big</li>
+<li>Only use constants for primitive types. </li>
+<li>Use variables or readers for more data that requires more memory</li>
+</ul>
+<h1 id="Operations"><a href="#Operations" class="headerlink" title="Operations"></a>Operations</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Category</th>
+<th style="text-align:center">Exampes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Element-wise mathmatical operations</td>
+<td style="text-align:center">Add,Sub,Mul,Div,Exp,Log,Greater,Less,Equal,…</td>
+</tr>
+<tr>
+<td style="text-align:center">Array operations</td>
+<td style="text-align:center">Concat,Slice,Split,Constant,Rank,Shape,Shuffle,…</td>
+</tr>
+<tr>
+<td style="text-align:center">Matrix operations</td>
+<td style="text-align:center">MatMul,MatrixInverse,MatrixDeterminant,…</td>
+</tr>
+<tr>
+<td style="text-align:center">Stateful operations</td>
+<td style="text-align:center">Variable,Assign,AssignAdd,…</td>
+</tr>
+<tr>
+<td style="text-align:center">Neural network building blocks</td>
+<td style="text-align:center">SoftMax, Sigmoid, ReLU, Convolution2D, MaxPool,…</td>
+</tr>
+<tr>
+<td style="text-align:center">Checkpointing operations</td>
+<td style="text-align:center">Save,Restore</td>
+</tr>
+<tr>
+<td style="text-align:center">Queue and synchronization operations</td>
+<td style="text-align:center">Enqueue,Dequeue,MutexAcquire,MutexRelease,…</td>
+</tr>
+<tr>
+<td style="text-align:center">Control flow operations</td>
+<td style="text-align:center">Merge,Switch,Enter,Leave,NextIteration,…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Rule-of-mathmatical-operations"><a href="#Rule-of-mathmatical-operations" class="headerlink" title="Rule of mathmatical operations"></a>Rule of mathmatical operations</h2><ul>
+<li><p>相同大小 Tensor 之间的任何算术运算都会将运算应用到元素级</p>
+</li>
+<li><p>不同大小 Tensor之间的运算叫做广播(broadcasting)</p>
+<ul>
+<li><p>当两个数组进行算术运算时，<strong>NumPy 从后向前，逐元素比较两个数组的形状</strong>。当逐个比较的元素值满足以下条件时，认为满足 Broadcasting 的条件：</p>
+<ol>
+<li><strong>相等</strong></li>
+<li><strong>其中一个是1</strong></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Image  (<span class="number">3</span>d array): <span class="number">256</span> x <span class="number">256</span> x <span class="number">3</span></span><br><span class="line">Scale  (<span class="number">1</span>d array):             <span class="number">3</span></span><br><span class="line">Result (<span class="number">3</span>d array): <span class="number">256</span> x <span class="number">256</span> x <span class="number">3</span></span><br><span class="line">----------------------------------------</span><br><span class="line">A      (<span class="number">4</span>d array):  <span class="number">8</span> x <span class="number">1</span> x <span class="number">6</span> x <span class="number">1</span></span><br><span class="line">B      (<span class="number">3</span>d array):      <span class="number">7</span> x <span class="number">1</span> x <span class="number">5</span></span><br><span class="line">Result (<span class="number">4</span>d array):  <span class="number">8</span> x <span class="number">7</span> x <span class="number">6</span> x <span class="number">5</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Tensor 与 Scalar(0维 tensor)  间的算术运算会将那个标量值传播到各个元素</p>
+</li>
+<li><p>Note： TensorFLow 在进行数学运算时，一定<strong>要求各个 Tensor 数据类型一致</strong></p>
+</li>
+</ul>
+<p><a href="https://blog.csdn.net/zywvvd/article/details/78593618" target="_blank" rel="noopener">https://blog.csdn.net/zywvvd/article/details/78593618</a>   【常用操作符和基本数学函数】</p>
+<blockquote>
+<p>大多数运算符都进行了重载操作，使我们可以快速使用 (+ - * /) 等，但是有一点不好的是使用重载操作符后就不能为每个操作命名了</p>
+</blockquote>
+<p><strong>Wizard of div</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a = tf.constant([<span class="number">2</span>, <span class="number">2</span>], name=<span class="string">'a'</span>) </span><br><span class="line">b = tf.constant([[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>]], name=<span class="string">'b'</span>) </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">	print(sess.run(tf.div(b, a)))    <span class="comment"># ⇒ [[0 0] [1 1]]         python2</span></span><br><span class="line">    print(sess.run(tf.divide(b, a))) <span class="comment"># ⇒ [[0. 0.5] [1. 1.5]]   python3</span></span><br><span class="line">    print(sess.run(tf.truediv(b, a))) <span class="comment"># ⇒ [[0. 0.5] [1. 1.5]]</span></span><br><span class="line">    print(sess.run(tf.floordiv(b, a))) <span class="comment"># ⇒ [[0 0] [1 1]]</span></span><br><span class="line">    print(sess.run(tf.realdiv(b, a)))  <span class="comment"># ⇒ Error: only works for real values</span></span><br><span class="line">    print(sess.run(tf.truncatediv(b, a))) <span class="comment"># ⇒ [[0 0] [1 1]]</span></span><br><span class="line">    print(sess.run(tf.floor_div(b, a))) <span class="comment"># ⇒ [[0 0] [1 1]]</span></span><br></pre></td></tr></table></figure>
+<h2 id="Variable"><a href="#Variable" class="headerlink" title="Variable"></a>Variable</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create variables with tf.Variable </span></span><br><span class="line">s = tf.Variable(<span class="number">2</span>, name=<span class="string">"scalar"</span>) </span><br><span class="line">m = tf.Variable([[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>]], name=<span class="string">"matrix"</span>) </span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># create variables with tf.get_variable    推荐使用tf.get_variable, which allows for easy variable sharing.</span></span><br><span class="line">s = tf.get_variable(<span class="string">"scalar"</span>, initializer=tf.constant(<span class="number">2</span>)) </span><br><span class="line">m = tf.get_variable(<span class="string">"matrix"</span>, initializer=tf.constant([[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>]])) </span><br><span class="line">W = tf.get_variable(<span class="string">"big_matrix"</span>, shape=(<span class="number">784</span>, <span class="number">10</span>), initializer=tf.zeros_initializer())</span><br></pre></td></tr></table></figure>
+<p>tf.Variable is a class with many ops</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tf.Variable holds several ops:</span></span><br><span class="line">x = tf.Variable(...)</span><br><span class="line">x.initializer <span class="comment"># init op </span></span><br><span class="line">x.value() <span class="comment"># read op </span></span><br><span class="line">x.assign(...) <span class="comment"># write op </span></span><br><span class="line">x.assign_add(...) <span class="comment"># and more</span></span><br></pre></td></tr></table></figure>
+<p>initialize op</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The easiest way is initializing all variables at once:</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(tf.global_variables_initializer())</span><br><span class="line"></span><br><span class="line"><span class="comment"># Initialize only a subset of variables:</span></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(tf.variables_initializer([a, b]))</span><br><span class="line">    </span><br><span class="line"><span class="comment"># Initialize a single variable</span></span><br><span class="line">W = tf.Variable(tf.zeros([<span class="number">784</span>,<span class="number">10</span>])) </span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(W.initializer)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Each session maintains its own copy of variables</li>
+</ul>
+<p><strong>placeholder</strong></p>
+<p>A TF program often has 2 phases:</p>
+<ol>
+<li><p>Assemble a graph</p>
+</li>
+<li><p>Use a session to execute operations in the graph.</p>
+</li>
+</ol>
+<p>⇒ Assemble the graph first without knowing the values needed for computation</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf.placeholder(dtype, shape=<span class="literal">None</span>, name=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>You can feed_dict any feedable tensor. Placeholder is just a way to indicate that something must be fed</li>
+</ul>
+<h1 id="Structuring-TensorFlow-Models"><a href="#Structuring-TensorFlow-Models" class="headerlink" title="Structuring TensorFlow Models"></a>Structuring TensorFlow Models</h1><p><a href="https://danijar.com/structuring-your-tensorflow-models/" target="_blank" rel="noopener">https://danijar.com/structuring-your-tensorflow-models/</a></p>
+<h1 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h1><h2 id="Variable-1"><a href="#Variable-1" class="headerlink" title="Variable"></a>Variable</h2><h2 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h2><p>tf.nn   tf.layer   tf.contrib.seq2seq(tf1.13)</p>
+<h3 id="common-layers-自定义层"><a href="#common-layers-自定义层" class="headerlink" title="common layers 自定义层"></a>common layers 自定义层</h3><p>继承自object类，重写__init__方法和__call__方法  </p>
+<p>__init__方法中传递layer超参，引用tf.layers中定义的常用层(<a href="https://cuiqingcai.com/5715.html)或自定义层" target="_blank" rel="noopener">https://cuiqingcai.com/5715.html)或自定义层</a></p>
+<p>__call__方法调用__init__方法中引用的层</p>
+<h3 id="RNN-Cell"><a href="#RNN-Cell" class="headerlink" title="RNN Cell"></a>RNN Cell</h3><p><a href="https://cuiqingcai.com/4925.html" target="_blank" rel="noopener">https://cuiqingcai.com/4925.html</a></p>
+<p>TensorFlow 实现 RNN Cell 的位置在 python/ops/rnn_cell_impl.py，首先其实现了一个 RNNCell 类，继承了 Layer 类，其内部有三个比较重要的方法，state_size()、output_size()、__call__() 方法</p>
+<p>其中 state_size() 和 output_size() 方法设置为类属性，可以当做属性来调用, 分别代表 Cell 的状态和输出维度，和 Cell中的神经元数量有关，但这里两个方法都没有实现，意思是说我们必须要实现一个子类继承 RNNCell 类并实现这两个方法</p>
+<p>__call__() 方法调用call方法，父类的 call() 方法实现非常简单，所以要实现其真正的功能，只需要在继承 RNNCell 类的子类中实现 call() 方法，输入input,state返回output和新的state</p>
+<h3 id="RNN-cell的wrapper"><a href="#RNN-cell的wrapper" class="headerlink" title="RNN cell的wrapper"></a>RNN cell的wrapper</h3><p>包括inputProjectionWrapper，outputProjectionWrapper在内的一些用于映射输入输出的类，往往没有直接在外面用tf的操作快。</p>
+<p>DropoutWrapper，将cell作为属性，并实现call方法，在调用cell前后进行dropout，支持对于输入，state和输出进行dropout。</p>
+<p>ResidualWrapper，就是把输入concat到输出上一起返回。</p>
+<p>DeviceWrapper，确保这个cell在指定的设备上运行。</p>
+<p>MultiRNNCell，这个也算是一个wrapper，因为可以拥有cell的数组作为属性，用于实现多层RNN。</p>
+<p>AttentionWrapper </p>
+<p>从staticrnn到dynamicrnn到bidirection_dynamic_rnn，其内部都是调用了这些cell的<code>__call()</code>方法。</p>
+<h3 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h3><p><a href="https://cuiqingcai.com/5873.html" target="_blank" rel="noopener">https://cuiqingcai.com/5873.html</a></p>
+<p>在 TensorFlow 中，Attention 的相关实现代码是在tensorflow/contrib/seq2seq/python/ops/attention_wrapper.py 文件中，这里面实现了两种 Attention 机制，分别是 BahdanauAttention 和 LuongAttention，其实现论文分别如下：</p>
+<ul>
+<li><a href="https://arxiv.org/abs/1409.0473" target="_blank" rel="noopener">Neural  Machine Translation by Jointly Learning to Align and Translate, Bahdanau, et al</a></li>
+<li><a href="https://arxiv.org/abs/1508.04025" target="_blank" rel="noopener">Effective  Approaches to Attention-based Neural Machine Translation, Luong, et al</a></li>
+</ul>
+<p>整个 attention_wrapper.py 文件中主要包含几个类，我们主要关注其中几个：</p>
+<ul>
+<li><p>AttentionMechanism、_BaseAttentionMechanism、LuongAttention、BahdanauAttention实现了 Attention 机制的逻辑。（给定当前时间步的query和memory，返回alignment）</p>
+<ul>
+<li>AttentionMechanism 是 Attention 类的父类，继承了 object类，内部没有任何实现。</li>
+<li>_BaseAttentionMechanism 继承自 AttentionMechanism 类，定义了Attention 机制的一些公共方法实现和属性。</li>
+<li>LuongAttention、BahdanauAttention 均继承_BaseAttentionMechanism 类，分别实现了上面两篇论文的 Attention 机制。</li>
+</ul>
+</li>
+<li><p>AttentionWrapperState 用来存储整个计算过程中的 state，和 RNN 中的 state类似，只不过这里额外还存储了 attention、time 等信息。</p>
+</li>
+<li><p>AttentionWrapper 主要用于对封装 RNNCell，继承自 RNNCell，封装后依然是RNNCell 的实例，可以构建一个带有 Attention 机制的 Decoder。</p>
+<blockquote>
+<p>装饰器模式：装饰模式可以动态扩展一个实现类的功能 </p>
+<p>1、Component 类充当抽象角色，实现基本功能。</p>
+<p> 2、修饰类引用和继承 Component 类，具体扩展类重写父类方法。</p>
+<p><a href="http://www.runoob.com/design-pattern/decorator-pattern.html" target="_blank" rel="noopener">http://www.runoob.com/design-pattern/decorator-pattern.html</a></p>
+</blockquote>
+</li>
+<li><p>另外还有一些公共方法，例如 hardmax、safe_cumpord 等</p>
+</li>
+</ul>
+<blockquote>
+<p>Perform a step of attention-wrapped RNN.<br>Step 1: Mix the inputs and previous step’s attention output via cell_input_fn .</p>
+<p>Step 2: Call the wrapped cell with this input and its previous state.</p>
+<p>Step 3: Score the cell’s output with attention_mechanism . </p>
+<p>Step 4: Calculate the alignments by passing the score through the normalizer .</p>
+<p>Step 5: Calculate the context vector as the inner product between the alignments and the attention mechanism’s values (memory).</p>
+<p>Step 6: Calculate the attention output by concatenating the cell output and context through the attention layer (a linear layer with attention_layer size outputs). </p>
+</blockquote>
+<h3 id="dynamic-decode-and-helper"><a href="#dynamic-decode-and-helper" class="headerlink" title="dynamic decode and helper"></a>dynamic decode and helper</h3><ul>
+<li><p>RNNCell:给定上个时间步的状态和当前时间步的输入-&gt;当前时间步的输出和这个时间步的输出和当前时间步的状态</p>
+</li>
+<li><p>Helper: 给定当前时间步的输出和当前时间步的状态-&gt;下个时间步的输入和当前时间步的状态，以及是否结束标志</p>
+<p>(tf.contrib.seq2seq.Helper, Defined in <a href="https://www.tensorflow.org/code/stable/tensorflow/contrib/seq2seq/python/ops/helper.py" target="_blank" rel="noopener">tensorflow/contrib/seq2seq/python/ops/helper.py</a>.)</p>
+<ul>
+<li><p>常用的Helper：</p>
+<ul>
+<li><p>TrainingHelper：适用于训练的helper。</p>
+</li>
+<li><p>InferenceHelper：适用于测试的helper。</p>
+</li>
+<li><p>GreedyEmbeddingHelper：适用于测试中采用Greedy策略sample的helper。</p>
+</li>
+<li><p>CustomHelper：用户自定义的helper。</p>
+<p>这里<strong>着重介绍</strong>CustomHelper，要传入三个函数作为参数：</p>
+<ul>
+<li>initialize_fn：返回finished，next_inputs。其中finished不是scala，是一个一维向量。这个函数即获取第一个时间节点的输入。</li>
+<li>sample_fn：接收参数(time, outputs, state) 返回sample_ids。即，根据每个cell的输出，如何sample。（用于机器翻译任务中，采样最可能的单词）</li>
+<li>next_inputs_fn：接收参数(time, outputs, state, sample_ids) 返回 (finished,      next_inputs, next_state)，根据上一个时刻的输出，决定下一个时刻的输入。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Decoder: 调用RNNcell和Helper, 给定上个时间步的状态和当前时间步的输入-&gt;当前时间步的输出和当前时间步的状态，以及下个时间步的输入，是否结束标志。有了Helper和RNNCell以后，可以使用tf.contrib.seq2seq.BasicDecoder定义自己的Decoder了。再使用tf.contrib.seq2seq.dynamic_decode执行decode</p>
+</li>
+<li><p>Dynamic decode 循环调用Decoder </p>
+</li>
+</ul>
+<p>​        (tf.contrib.seq2seq.dynamic_decode, Defined in <a href="https://www.tensorflow.org/code/stable/tensorflow/contrib/seq2seq/python/ops/decoder.py" target="_blank" rel="noopener">tensorflow/contrib/seq2seq/python/ops/decoder.py</a>.)</p>
+<h3 id="Loss"><a href="#Loss" class="headerlink" title="Loss"></a>Loss</h3><h1 id="Training-Loop"><a href="#Training-Loop" class="headerlink" title="Training Loop"></a>Training Loop</h1><h1 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h1><h1 id="Save-amp-Load-Log"><a href="#Save-amp-Load-Log" class="headerlink" title="Save&amp;Load  Log"></a>Save&amp;Load  Log</h1><h1 id="device-amp-MultiGPU"><a href="#device-amp-MultiGPU" class="headerlink" title="device &amp; MultiGPU"></a>device &amp; MultiGPU</h1><h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h1><p>tf.shape()   X.get_shape().as_list()</p>
+<p><a href="https://www.jianshu.com/p/2b88256ad206" target="_blank" rel="noopener">https://www.jianshu.com/p/2b88256ad206</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/12/English/" rel="next" title="English learning">
+                <i class="fa fa-chevron-left"></i> English learning
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/12/机器学习/" rel="prev" title="Machine learning">
+                Machine learning <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">lizzy llq</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Overview-of-tensorflow"><span class="nav-number">1.</span> <span class="nav-text">Overview of tensorflow</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basis-operatons"><span class="nav-number">2.</span> <span class="nav-text">Basis operatons</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tensorboard"><span class="nav-number">2.1.</span> <span class="nav-text">tensorboard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#constant"><span class="nav-number">2.2.</span> <span class="nav-text">constant</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Operations"><span class="nav-number">3.</span> <span class="nav-text">Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rule-of-mathmatical-operations"><span class="nav-number">3.1.</span> <span class="nav-text">Rule of mathmatical operations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Variable"><span class="nav-number">3.2.</span> <span class="nav-text">Variable</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Structuring-TensorFlow-Models"><span class="nav-number">4.</span> <span class="nav-text">Structuring TensorFlow Models</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Model"><span class="nav-number">5.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Variable-1"><span class="nav-number">5.1.</span> <span class="nav-text">Variable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Network"><span class="nav-number">5.2.</span> <span class="nav-text">Neural Network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#common-layers-自定义层"><span class="nav-number">5.2.1.</span> <span class="nav-text">common layers 自定义层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RNN-Cell"><span class="nav-number">5.2.2.</span> <span class="nav-text">RNN Cell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RNN-cell的wrapper"><span class="nav-number">5.2.3.</span> <span class="nav-text">RNN cell的wrapper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attention"><span class="nav-number">5.2.4.</span> <span class="nav-text">Attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dynamic-decode-and-helper"><span class="nav-number">5.2.5.</span> <span class="nav-text">dynamic decode and helper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loss"><span class="nav-number">5.2.6.</span> <span class="nav-text">Loss</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Training-Loop"><span class="nav-number">6.</span> <span class="nav-text">Training Loop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dataset"><span class="nav-number">7.</span> <span class="nav-text">Dataset</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Save-amp-Load-Log"><span class="nav-number">8.</span> <span class="nav-text">Save&amp;Load  Log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#device-amp-MultiGPU"><span class="nav-number">9.</span> <span class="nav-text">device &amp; MultiGPU</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Q-amp-A"><span class="nav-number">10.</span> <span class="nav-text">Q &amp; A</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lizzy llq</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
